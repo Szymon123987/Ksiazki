@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BookClient</string>
+    <string name="form_title">Tytuł</string>
+    <string name="form_author">Autor</string>
+    <string name="form_numberOfPages">Liczba stron</string>
+    <string name="form_rating">Ocena w skali 1-10</string>
+    <string name="save_book">Zapisz</string>
+</resources>
