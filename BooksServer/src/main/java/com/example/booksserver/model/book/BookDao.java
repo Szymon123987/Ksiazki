@@ -29,11 +29,10 @@ public class BookDao {
         book1.setRating(book.getRating());
         book1.setNumberOfPages(book.getNumberOfPages());
 
-        return repository.save(book);
+        return repository.save(book1);
     }
 
-    public Book delete(Book book){
-        repository.delete(book);
-        return book;
+    public void  delete(int id){
+        repository.deleteById(id);
     }
 }

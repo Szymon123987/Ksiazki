@@ -26,6 +26,8 @@ public class BookController {
     @PutMapping("book/update/")
     public Book update(@RequestBody Book book){return bookDao.save(book);}
 
-    @DeleteMapping("book/delete/")
-    public Book delete(@RequestBody Book book){return bookDao.delete(book);}
+    @DeleteMapping("book/delete/{id}")
+    public void delete(@PathVariable("id") int id){
+        bookDao.delete(id);
+    }
 }
