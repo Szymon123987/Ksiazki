@@ -32,7 +32,8 @@ public class BookDao {
         return repository.save(book);
     }
 
-    public void delete(Book book){
+    public Book delete(Book book){
         repository.delete(book);
+        return book;
     }
 }

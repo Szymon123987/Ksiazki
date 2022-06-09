@@ -13,16 +13,19 @@ public class BookController {
     @Autowired
     private BookDao bookDao;
 
-    @GetMapping("book/get-all")
+    @GetMapping("book/get-all/")
     public List<Book> getAllBooks(){
         return bookDao.getAllBooks();
     }
 
-    @PostMapping("book/save")
+    @PostMapping("book/save/")
     public Book save(@RequestBody Book book){
         return bookDao.save(book);
     }
 
-    @PutMapping("book/update")
+    @PutMapping("book/update/")
     public Book update(@RequestBody Book book){return bookDao.save(book);}
+
+    @DeleteMapping("book/delete/")
+    public Book delete(@RequestBody Book book){return bookDao.delete(book);}
 }
