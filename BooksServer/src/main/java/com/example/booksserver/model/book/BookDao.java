@@ -22,6 +22,16 @@ public class BookDao {
         return books;
     }
 
+    public Book update(Book book){
+        Book book1=new Book();
+        book1.setTitle(book.getTitle());
+        book1.setAuthor(book.getAuthor());
+        book1.setRating(book.getRating());
+        book1.setNumberOfPages(book.getNumberOfPages());
+
+        return repository.save(book);
+    }
+
     public void delete(Book book){
         repository.delete(book);
     }
