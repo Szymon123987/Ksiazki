@@ -5,8 +5,26 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private int numberOfPages;
-    private int rating;
+    private String numberOfPages;
+    private String rating;
+    private String message;
+    private Boolean success;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMassage(String massage) {
+        this.message = massage;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -20,11 +38,11 @@ public class Book {
         this.author = author;
     }
 
-    public void setNumberOfPages(int numberOfPages) {
+    public void setNumberOfPages(String numberOfPages) {
         this.numberOfPages = numberOfPages;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -40,11 +58,11 @@ public class Book {
         return author;
     }
 
-    public int getNumberOfPages() {
+    public String getNumberOfPages() {
         return numberOfPages;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
