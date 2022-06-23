@@ -1,5 +1,7 @@
 package com.example.bookclient.model;
 
+import androidx.annotation.NonNull;
+
 public class Book {
 
     private int id;
@@ -14,9 +16,7 @@ public class Book {
         return message;
     }
 
-    public void setMassage(String massage) {
-        this.message = massage;
-    }
+    //public void setMassage(String massage) {this.message = massage;}
 
     public Boolean getSuccess() {
         return success;
@@ -66,6 +66,7 @@ public class Book {
         return rating;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Book{" +

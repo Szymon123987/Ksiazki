@@ -42,9 +42,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         recyclerView.setLayoutManager((new LinearLayoutManager(this)));
 
         fab=findViewById(R.id.add);
-        fab.setOnClickListener(view -> {
-                        startActivityForResult(new Intent(this, EditorActivity.class),INTENT_ADD);
-        });
+        fab.setOnClickListener(view -> startActivityForResult(new Intent(this, EditorActivity.class),INTENT_ADD));
 
         presenter=new MainPresenter(this);
         presenter.getData();
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showLoading(){
-        //swipeRefresh.setRefreshing(true);
+        swipeRefresh.setRefreshing(true);
     }
 
     @Override

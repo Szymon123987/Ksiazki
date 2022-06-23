@@ -1,32 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bookclient">
-
-
+    package="com.example.bookclient" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BookClient">
+        android:theme="@style/Theme.BookClient"
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name=".main.MainActivity"
-            android:exported="true">
+            android:name=".firebase.RegisterFirebase"
+            android:exported="true" />
+
+        <activity
+            android:name=".firebase.LoginFirebase"
+            android:exported="true" />
+
+        <activity
+            android:name=".firebase.Firebase"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".register.RegisterActivity"
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".editor.EditorActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

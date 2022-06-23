@@ -7,6 +7,7 @@ import java.util.List;
 public interface MainView {
     void showLoading();
     void hideLoading();
-    void onGetResult(List<Book> notes);
+    void onGetResult(List<Book> books);
     void onErrorLoading(String message);
+
 }

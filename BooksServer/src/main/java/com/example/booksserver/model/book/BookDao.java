@@ -23,13 +23,13 @@ public class BookDao {
     }
 
     public Book update(Book book){
-        Book book1=new Book();
-        book1.setTitle(book.getTitle());
-        book1.setAuthor(book.getAuthor());
-        book1.setRating(book.getRating());
-        book1.setNumberOfPages(book.getNumberOfPages());
+        Book bookDao=new Book();
+        bookDao.setTitle(book.getTitle());
+        bookDao.setAuthor(book.getAuthor());
+        bookDao.setRating(book.getRating());
+        bookDao.setNumberOfPages(book.getNumberOfPages());
 
-        return repository.save(book1);
+        return repository.save(bookDao);
     }
 
     public void  delete(int id){
