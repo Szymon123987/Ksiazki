@@ -1,5 +1,7 @@
 package com.example.bookclient.editor;
 
+import androidx.annotation.NonNull;
+
 import com.example.bookclient.model.Book;
 import com.example.bookclient.retrofit.BookApi;
 import com.example.bookclient.retrofit.RetrofitService;
@@ -9,7 +11,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditorPresenter {
-    private EditorView view;
+    private final EditorView view;
 
     public EditorPresenter(EditorView view){this.view=view;}
 
@@ -24,7 +26,7 @@ public class EditorPresenter {
 
         call.enqueue(new Callback<Book>() {
             @Override
-            public void onResponse(Call<Book> call, Response<Book> response) {
+            public void onResponse(@NonNull Call<Book> call, @NonNull Response<Book> response) {
                 view.hideProgress();
                 if(response.isSuccessful()&&response.body()!=null)
                 {
@@ -40,7 +42,7 @@ public class EditorPresenter {
             }
 
             @Override
-            public void onFailure(Call<Book> call, Throwable t) {
+            public void onFailure(@NonNull Call<Book> call, @NonNull Throwable t) {
                 view.hideProgress();
                 view.onRequestError(t.getLocalizedMessage());
             }
@@ -59,7 +61,7 @@ public class EditorPresenter {
         Call<Book> call=bookApi.updateBook(book);
         call.enqueue(new Callback<Book>() {
             @Override
-            public void onResponse( Call<Book> call,  Response<Book> response) {
+            public void onResponse(@NonNull Call<Book> call, @NonNull Response<Book> response) {
                 view.hideProgress();
                 if(response.isSuccessful()&&response.body()!=null){
 
@@ -74,7 +76,7 @@ public class EditorPresenter {
             }
 
             @Override
-            public void onFailure( Call<Book> call,  Throwable t) {
+            public void onFailure(@NonNull Call<Book> call, @NonNull Throwable t) {
                 view.hideProgress();
                 view.onRequestError(t.getLocalizedMessage());
             }
@@ -88,7 +90,7 @@ public class EditorPresenter {
         Call<Book> call=bookApi.delete(id);
         call.enqueue(new Callback<Book>() {
             @Override
-            public void onResponse(Call<Book> call, Response<Book> response) {
+            public void onResponse(@NonNull Call<Book> call, @NonNull Response<Book> response) {
                 view.hideProgress();
                 if(response.isSuccessful()&&response.body()!=null){
 
@@ -103,7 +105,7 @@ public class EditorPresenter {
             }
 
             @Override
-            public void onFailure(Call<Book> call, Throwable t) {
+            public void onFailure(@NonNull Call<Book> call, @NonNull Throwable t) {
                 view.hideProgress();
                 view.onRequestError(t.getLocalizedMessage());
             }

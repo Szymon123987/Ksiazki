@@ -1,6 +1,7 @@
 package com.example.bookclient.editor;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookclient.R;
 import com.example.bookclient.model.Book;
+
+import java.util.Objects;
 
 public class EditorActivity extends AppCompatActivity implements EditorView {
 
@@ -77,6 +80,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         Book book=new Book();
@@ -145,7 +149,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                 alertDialog.setNegativeButton("Yes",
                         (dialogInterface, i) -> {dialogInterface.dismiss(); presenter.deleteBook(id);});
                 alertDialog.setPositiveButton("Cancel",
-                        (dialogInterface, i) ->{dialogInterface.dismiss();});
+                        (dialogInterface, i) -> dialogInterface.dismiss());
                 alertDialog.show();
 
                 return true;
@@ -189,7 +193,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
             et_rate.setText(rate);
             et_numberOfPages.setText(numberOfPages);
 
-            getSupportActionBar().setTitle("Update book");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Update book");
             readMode();
         }
         else{

@@ -17,9 +17,9 @@ import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAdapter> {
 
-    private Context context;
-    private List<Book> books;
-    private ItemClickListener itemClickListener;
+    private final Context context;
+    private final List<Book> books;
+    private final ItemClickListener itemClickListener;
 
     public MainAdapter(Context context, List<Book> books, ItemClickListener itemClickListener) {
         this.context = context;
@@ -31,7 +31,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAd
     @Override
     public RecyclerViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.book_item,parent,false);
-        return new RecyclerViewAdapter(view,itemClickListener);
+        return new RecyclerViewAdapter(view, itemClickListener);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAd
 
 
 
-    public class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener  {
+    public static class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener  {
         TextView tv_title, tv_author, tv_rate,tv_numberOfPages;
         CardView card_item;
         ItemClickListener itemClickListener;
@@ -65,7 +65,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAd
             card_item=itemView.findViewById(R.id.card_item);
 
             this.itemClickListener=itemClickListener;
-            card_item.setOnClickListener(this::onClick);
+            card_item.setOnClickListener(this);
         }
 
         @Override
