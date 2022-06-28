@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookclient.R;
 import com.example.bookclient.model.Book;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
     int id;
     String title,author,rate,numberOfPages;
     Menu actionMenu;
+
 
     EditorPresenter presenter;
 
@@ -107,7 +109,10 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                     book.setAuthor(author);
                     book.setNumberOfPages(numberOfPages);
                     book.setRating(rate);
+
                     presenter.saveBook(book);
+                    presenter.saveBookFirebase(book.getTitle().toString());
+
                 }
                 return true;
             case R.id.edit:
