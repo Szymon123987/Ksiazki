@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookclient.R;
 import com.example.bookclient.model.Book;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.Objects;
 
@@ -27,8 +27,6 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
     int id;
     String title,author,rate,numberOfPages;
     Menu actionMenu;
-
-
     EditorPresenter presenter;
 
     @Override
@@ -79,7 +77,6 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
         }
 
         return true;
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -90,7 +87,6 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
         String author=et_author.getText().toString().trim();
         String rate=et_rate.getText().toString().trim();
         String numberOfPages=et_numberOfPages.getText().toString().trim();
-
 
         switch (item.getItemId()){
             case R.id.save:
@@ -109,10 +105,8 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                     book.setAuthor(author);
                     book.setNumberOfPages(numberOfPages);
                     book.setRating(rate);
-
                     presenter.saveBook(book);
-                    presenter.saveBookFirebase(book.getTitle().toString());
-
+                    presenter.saveBookFirebase(book.getTitle());
                 }
                 return true;
             case R.id.edit:
@@ -121,10 +115,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                 actionMenu.findItem(R.id.delete).setVisible(false);
                 actionMenu.findItem(R.id.save).setVisible(false);
                 actionMenu.findItem(R.id.update).setVisible(true);
-
                 return true;
-
-
             case R.id.update:
                 if (title.isEmpty()) {
                     et_title.setError("Please enter a title");
@@ -145,9 +136,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                     presenter.updateBook(book);
                 }
                 return true;
-
             case R.id.delete:
-                //
                 AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
                 alertDialog.setTitle("Confirm!");
                 alertDialog.setMessage("Are you sure?");
@@ -156,21 +145,16 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                 alertDialog.setPositiveButton("Cancel",
                         (dialogInterface, i) -> dialogInterface.dismiss());
                 alertDialog.show();
-
                 return true;
-
-
             default:
                 actionMenu.findItem(R.id.update).setVisible(false);
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override
     public void showProgress() {
         progressDialog.show();
-
     }
 
     @Override
@@ -180,7 +164,6 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
 
     @Override
     public void onRequestSuccess(String message) {
-        Toast.makeText(EditorActivity.this,message,Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -197,7 +180,6 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
             et_author.setText(author);
             et_rate.setText(rate);
             et_numberOfPages.setText(numberOfPages);
-
             Objects.requireNonNull(getSupportActionBar()).setTitle("Update book");
             readMode();
         }

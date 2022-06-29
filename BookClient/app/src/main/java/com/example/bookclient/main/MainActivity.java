@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     FloatingActionButton fab;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
-
     MainPresenter presenter;
     MainAdapter adapter;
     MainAdapter.ItemClickListener itemClickListener;
@@ -35,20 +34,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         swipeRefresh=findViewById(R.id.swipe_refresh);
         recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager((new LinearLayoutManager(this)));
-
         fab=findViewById(R.id.add);
         fab.setOnClickListener(view -> startActivityForResult(new Intent(this, EditorActivity.class),INTENT_ADD));
-
         presenter=new MainPresenter(this);
         presenter.getData();
-
         swipeRefresh.setOnRefreshListener(()->presenter.getData());
-
 
         itemClickListener=((view, position) -> {
             int id=book.get(position).getId();
@@ -56,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
             String author=book.get(position).getAuthor();
             String rate=book.get(position).getRating();
             String numberOfPages=book.get(position).getNumberOfPages();
-
             Intent intent =new Intent(this,EditorActivity.class);
             intent.putExtra("id",id);
             intent.putExtra("title",title);
@@ -64,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
             intent.putExtra("rate",rate);
             intent.putExtra("numberOfPages",numberOfPages);
             startActivityForResult(intent,INTENT_EDIT);
-
         });
 
     }
@@ -72,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode==INTENT_ADD&&resultCode==RESULT_OK){
             presenter.getData();//reload data
         }

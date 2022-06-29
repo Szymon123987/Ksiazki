@@ -16,7 +16,6 @@ public class Book {
         return message;
     }
 
-    //public void setMassage(String massage) {this.message = massage;}
 
     public Boolean getSuccess() {
         return success;

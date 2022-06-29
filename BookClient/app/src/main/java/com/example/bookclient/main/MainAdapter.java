@@ -48,8 +48,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAd
         return books.size();
     }
 
-
-
     public static class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener  {
         TextView tv_title, tv_author, tv_rate,tv_numberOfPages;
         CardView card_item;
