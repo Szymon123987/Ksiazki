@@ -21,14 +21,9 @@ public class MainPresenter {
 
     void getData(){
         view.showLoading();
-
-
-
         RetrofitService retrofitService=new RetrofitService();
         BookApi bookApi=retrofitService.getRetrofit().create(BookApi.class);
-
         Call<List<Book>> call=bookApi.getAllBooks();
-
         call.enqueue(new Callback<List<Book>>() {
             @Override
             public void onResponse(@NonNull Call<List<Book>> call, @NonNull Response<List<Book>> response) {

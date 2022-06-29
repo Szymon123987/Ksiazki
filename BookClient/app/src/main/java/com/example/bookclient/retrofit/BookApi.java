@@ -1,11 +1,7 @@
 package com.example.bookclient.retrofit;
 
 import com.example.bookclient.model.Book;
-import com.example.bookclient.model.User;
-
 import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -24,13 +20,5 @@ public interface BookApi {
     Call<Book> delete(@Path("id") int id);
     @PUT("/book/update/")
     Call<Book> updateBook(@Body Book book);
-
-    @POST("/register/")
-    Call<ResponseBody> createUser(@Body User user);
-
-    @POST("/login/")
-    Call<ResponseBody> checkUser(@Body User user);
-    @GET("find/{username}")
-    Call<User> findUserByUsername(@Path("username")String username);
 
 }
